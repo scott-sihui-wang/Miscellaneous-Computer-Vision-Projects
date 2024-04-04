@@ -1,0 +1,46 @@
+#import the packages needed
+import bpy
+import mathutils
+import bmesh
+
+# N is a parameter used for interpolation
+# We will divide the curve by N parts and generate N+1 interpolation points
+N=255
+
+# Python script to add 4 Bezier curves
+bpy.ops.curve.primitive_bezier_curve_add()
+bpy.ops.curve.primitive_bezier_curve_add()
+bpy.ops.curve.primitive_bezier_curve_add()
+bpy.ops.curve.primitive_bezier_curve_add()
+
+# Set the end points of Bezier curves. Make sure that 4 curves can join together by end points and form a loop.
+bpy.data.curves[0].splines[0].bezier_points[0].co=mathutils.Vector((-1,2,1))
+bpy.data.curves[0].splines[0].bezier_points[1].co=mathutils.Vector((1,2,-1))
+bpy.data.curves[1].splines[0].bezier_points[0].co=mathutils.Vector((-1,-2,-1))
+bpy.data.curves[1].splines[0].bezier_points[1].co=mathutils.Vector((1,-2,1))
+bpy.data.curves[2].splines[0].bezier_points[0].co=mathutils.Vector((-1,2,1))
+bpy.data.curves[2].splines[0].bezier_points[1].co=mathutils.Vector((-1,-2,-1))
+bpy.data.curves[3].splines[0].bezier_points[0].co=mathutils.Vector((1,2,-1))
+bpy.data.curves[3].splines[0].bezier_points[1].co=mathutils.Vector((1,-2,1))
+
+# Calculate the interpolation points for the 4 Bezier curves
+pts1=mathutils.geometry.interpolate_bezier(bpy.data.curves[0].splines[0].bezier_points[0].co,bpy.data.curves[0].splines[0].bezier_points[0].handle_right,bpy.data.curves[0].splines[0].bezier_points[1].handle_left,bpy.data.curves[0].splines[0].bezier_points[1].co,N+1)
+pts2=mathutils.geometry.interpolate_bezier(bpy.data.curves[1].splines[0].bezier_points[0].co,bpy.data.curves[1].splines[0].bezier_points[0].handle_right,bpy.data.curves[1].splines[0].bezier_points[1].handle_left,bpy.data.curves[1].splines[0].bezier_points[1].co,N+1)
+pts3=mathutils.geometry.interpolate_bezier(bpy.data.curves[2].splines[0].bezier_points[0].co,bpy.data.curves[2].splines[0].bezier_points[0].handle_right,bpy.data.curves[2].splines[0].bezier_points[1].handle_left,bpy.data.curves[2].splines[0].bezier_points[1].co,N+1)
+pts4=mathutils.geometry.interpolate_bezier(bpy.data.curves[3].splines[0].bezier_points[0].co,bpy.data.curves[3].splines[0].bezier_points[0].handle_right,bpy.data.curves[3].splines[0].bezier_points[1].handle_left,bpy.data.curves[3].splines[0].bezier_points[1].co,N+1)
+
+# Save the results to a file
+f=open("BezierPoints.txt",'w')
+f.write('# 1\n') # mark the start of curve 1
+for pts in pts1:
+    f.write('%.6f\t %.6f\t %.6f\n'%(pts.x,pts.y,pts.z))
+f.write('# 2\n') # mark the start of curve 2
+for pts in pts2:
+    f.write('%.6f\t %.6f\t %.6f\n'%(pts.x,pts.y,pts.z))
+f.write('# 3\n') #mark the start of curve 3
+for pts in pts3:
+    f.write('%.6f\t %.6f\t %.6f\n'%(pts.x,pts.y,pts.z))
+f.write('# 4\n') # mark the start of curve 4
+for pts in pts4:
+    f.write('%.6f\t %.6f\t %.6f\n'%(pts.x,pts.y,pts.z))
+f.close()

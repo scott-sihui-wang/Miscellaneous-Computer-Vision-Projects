@@ -1,0 +1,79 @@
+import bpy
+import mathutils
+from bpy import context
+#import the packages needed
+
+# export objects to .obj file
+def export_obj(filepath,obj):
+    mesh = obj.data
+    with open(filepath, 'w') as f:
+        f.write("# OBJ file\n")
+        for v in mesh.vertices:
+            f.write("v %.4f %.4f %.4f\n" % v.co[:])
+        for p in mesh.polygons:
+            f.write("f")
+            for i in p.vertices:
+                f.write(" %d" % (i + 1))
+            f.write("\n")
+
+# N is a parameter used for interpolation
+N=255
+
+# pts1, pts2, pts3, pts4: load the interpolation points of Bezier curves from files
+pts1=[]
+pts2=[]
+pts3=[]
+pts4=[]
+# Read interpolation points from file
+for line in open("BezierPoints.txt",'r'):
+    values=line.split()
+    if line.startswith('#'): # the line starts with '#' indicates the start of a new curve
+        idx=int(values[1]) # read the number after '#'. if this number is n, then we store the interpolation points to pts[n]
+        continue # for the line that starts with '#', we only read value[1], then we skip this round of iteration and prepare to read points from the next iteration
+    if idx==1:  # for lines after '# 1', store the interpolation points to pts1
+        pts1.append(mathutils.Vector((float(values[0]),float(values[1]),float(values[2]))))
+    elif idx==2: # for lines after '# 2', store the interpolation points to pts2
+        pts2.append(mathutils.Vector((float(values[0]),float(values[1]),float(values[2]))))
+    elif idx==3: # for lines after '# 3', store the interpolation points to pts3
+        pts3.append(mathutils.Vector((float(values[0]),float(values[1]),float(values[2]))))
+    elif idx==4: # for lines after '# 4', store the interpolation points to pts4
+        pts4.append(mathutils.Vector((float(values[0]),float(values[1]),float(values[2]))))
+# perform coons patch
+vertices=[]
+for i in range(N+1):
+    for j in range(N+1):
+        interpolation=(1-j/N)*pts1[i]+j/N*pts2[i]+(1-i/N)*pts3[j]+i/N*pts4[j]-pts1[0]*(1-i/N)*(1-j/N)-pts1[N]*i/N*(1-j/N)-pts2[0]*(1-i/N)*j/N-pts2[N]*i/N*j/N
+        vertex=[]
+        vertex.append(interpolation.x)
+        vertex.append(interpolation.y)
+        vertex.append(interpolation.z)
+        vertices.append(vertex)
+
+# "link" neighbouring 4 vertices together to generate "square" faces
+faces=[]
+for i in range(N):
+    for j in range(N):
+        index=[]
+        index.append(i*(N+1)+j)
+        index.append((i+1)*(N+1)+j)
+        index.append((i+1)*(N+1)+j+1)
+        index.append(i*(N+1)+j+1)
+        faces.append(index)
+
+# Generate the Coons Patch Surface
+me=bpy.data.meshes.new('CoonsPatchMesh')
+ob=bpy.data.objects.new('CoonsPatch',me)
+ob.location=(0,0,0)
+ob.show_name=True
+scn=bpy.context.scene
+scn.collection.objects.link(ob)
+bpy.context.view_layer.objects.active=ob
+ob.select_set(True)
+me.from_pydata(vertices,[],faces)
+
+me.update()
+
+# Save the surface to an .obj file
+filepath = "CoonsPatch.obj"
+obj = context.object
+export_obj(filepath,obj)
