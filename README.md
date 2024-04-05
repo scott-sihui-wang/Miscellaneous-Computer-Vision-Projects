@@ -10,6 +10,10 @@ This is a collection of assignments from the course of CMPT 732: `Visual Computi
 
 - **Image Inpainting:** This is an implementation of `Poisson blending` to seamlessly blend images together by `gradient domain fusion` techniques.
 
+  _As is shown below, Possion blending generated much more natural blending of images._
+
+  ![Poisson Blending](/demo/blending.png)
+
 - **Homography Estimation:** Extract matching point pairs from stereo images, and then use two methods (`eight point method` and `RANSAC`) to estimate `homography` matrix.
 
 - **Coons Patch:** This is to generate `coons patch` surfaces from `Bezier curves`. Then, the generated surface is rendered using `Blender`.
