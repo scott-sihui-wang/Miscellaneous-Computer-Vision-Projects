@@ -4,6 +4,8 @@ This is a collection of assignments from the course of CMPT 732: `Visual Computi
 
 - **Active Contours:** Use energy forces and constraints to extract the boundaries of `RoI` (Region of Interest).
 
+![](/demo/init_curve.png) ![](/demo/segmentation.png)
+
 - **Image Inpainting:** This is an implementation of `Poisson blending` to seamlessly blend images together by `gradient domain fusion` techniques.
 
 - **Homography Estimation:** Extract matching point pairs from stereo images, and then use two methods (`eight point method` and `RANSAC`) to estimate `homography` matrix.
