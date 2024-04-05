@@ -16,6 +16,12 @@ This is a collection of assignments from the course of CMPT 732: `Visual Computi
 
 - **Homography Estimation:** Extract matching point pairs from stereo images, and then use two methods (`eight point method` and `RANSAC`) to estimate `homography` matrix.
 
+  _The comparison shows that our implementation (up) can produce results similar to OpenCV's built-in functions (down);_
+
+  _RANSAC (left) produces far more accurate results than eight point method._
+
+  ![Homography estimation](/demo/Homography.png)
+
 - **Coons Patch:** This is to generate `coons patch` surfaces from `Bezier curves`. Then, the generated surface is rendered using `Blender`.
 
 For `active contours` and `image inpainting`, please refer to my report [here](report.pdf);
