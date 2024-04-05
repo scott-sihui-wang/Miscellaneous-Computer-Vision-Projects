@@ -16,6 +16,6 @@ For `homography estimation`, please refer to [readMe](/MatF/ReadMe.txt) for a fu
 
 For `coons Patch`, please refer to [readMe](/CoonsPatch/ReadMe.txt) for a full explanation of environment requirements, file organization, and command line codes to run the program.
 
-**Topics:** _Formal Verification_
+**Topics:** _Computer Vision_, _Active Contours_
 
-**Skills:** _Java_, _Z3 theorem solver_, _Dafny_
+**Skills:** _OpenCV_, _Blender_, _Python_, _Matlab_
