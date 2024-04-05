@@ -2,11 +2,13 @@
 
 This is a collection of assignments from the course of CMPT 732: `Visual Computing Labs I`. The assignments include:
 
-- **Active Contours:**
+- **Active Contours:** Use energy forces and constraints to extract the boundaries of `RoI` (Region of Interest).
+
+
 
 - **Image Inpainting:**
 
-- **Homography Estimation:**
+- **Homography Estimation:** Extract matching point pairs from stereo images, and then use two methods (`eight point method` and `RANSAC`) to estimate 'Homography' matrix.
 
 - **Coons Patch:**
 
