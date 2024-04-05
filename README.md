@@ -4,6 +4,8 @@ This is a collection of assignments from the course of CMPT 732: `Visual Computi
 
 - **Active Contours:** Use energy forces and constraints to extract the boundaries of `RoI` (Region of Interest).
 
+- <img src="/demo/init_curve.png" alt="drawing" width="200"/>
+
 ![](/demo/init_curve.png){width=200, height=300} ![](/demo/segmentation.png){width=200, height=300}
 
 - **Image Inpainting:** This is an implementation of `Poisson blending` to seamlessly blend images together by `gradient domain fusion` techniques.
