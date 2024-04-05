@@ -4,13 +4,11 @@ This is a collection of assignments from the course of CMPT 732: `Visual Computi
 
 - **Active Contours:** Use energy forces and constraints to extract the boundaries of `RoI` (Region of Interest).
 
-
-
-- **Image Inpainting:**
+- **Image Inpainting:** This is an implementation of `Poisson blending` to seamlessly blend images together by `gradient domain fusion` techniques.
 
 - **Homography Estimation:** Extract matching point pairs from stereo images, and then use two methods (`eight point method` and `RANSAC`) to estimate 'Homography' matrix.
 
-- **Coons Patch:**
+- **Coons Patch:** This is to generate `coons patch` surfaces from `Bezier curves`. Then, the generated surface is rendered using `Blender`.
 
 For `active contours` and `image inpainting`, please refer to my report [here](report.pdf);
 
