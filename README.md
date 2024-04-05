@@ -4,7 +4,7 @@ This is a collection of assignments from the course of CMPT 732: `Visual Computi
 
 - **Active Contours:** Use energy forces and constraints to extract the boundaries of `RoI` (Region of Interest).
 
-As is shown in the demo, the initial curve (left) will recursively shrink to the true boundary of `RoI` (right).
+  _As is shown in the demo, the initial curve (left) will recursively shrink to the true boundary of `RoI` (right)._
 
 <img src="/demo/init_curve.png" alt="drawing" width="200"/> <img src="/demo/segmentation.png" alt="drawing" width="200"/>
 
