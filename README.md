@@ -24,6 +24,10 @@ This is a collection of assignments from the course of CMPT 732: `Visual Computi
 
 - **Coons Patch:** This is to generate `coons patch` surfaces from `Bezier curves`. Then, the generated surface is rendered using `Blender`.
 
+  _Below shows the initial Beizer curves, the interpolated coons patch surface, and the rendered surface, respectively._
+  
+  ![Blender](/demo/blender.png)
+
 For `active contours` and `image inpainting`, please refer to my report [here](report.pdf);
 
 For `homography estimation`, please refer to [readMe](/MatF/ReadMe.txt) for a full explanation of environment requirements, file organization, and command line codes to run the program;
