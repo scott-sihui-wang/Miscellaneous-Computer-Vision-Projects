@@ -18,7 +18,7 @@ This is a collection of assignments from the course of CMPT 732: `Visual Computi
 
   _The comparison shows that our implementation (up) can produce results similar to OpenCV's built-in functions (down);_
 
-  _RANSAC (left) produces far more accurate results than eight point method._
+  _RANSAC (right) produces far more accurate results than eight point method (left)._
 
   ![Homography estimation](/demo/Homography.png)
 
