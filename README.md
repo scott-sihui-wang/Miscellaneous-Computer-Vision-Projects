@@ -16,7 +16,7 @@ This is a collection of assignments from the course of CMPT 732: `Visual Computi
 
 - **Homography Estimation:** Extract matching point pairs from stereo images, and then use two methods (`eight point method` and `RANSAC`) to estimate `homography` matrix.
 
-  _The comparison shows that our implementation (up) can produce results similar to OpenCV's built-in functions (down);_
+  _The comparison shows that our implementation (top) can produce results similar to OpenCV's built-in functions (bottom);_
 
   _RANSAC (right) produces far more accurate results than eight point method (left)._
 
